@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load feincms_tags feincms_page_tags branding i18n %}
+{% load feincms_tags leonardo_tags branding i18n %}
 <html>
   {% block header %}
   {% include "_header.html" %}
@@ -22,10 +22,7 @@
           {% feincms_render_region feincms_page "toolbar" request %}
         </section>
         <section class="content">
-          {% feincms_render_region feincms_page "col3" request %}
-          {% if request.frontend_editing %}
-          <a href="{% url 'widget_create' 'web.htmltextwidget' %}">Přidat</a>
-          {% endif %}
+          {% block body_main %}{% feincms_render_region feincms_page "col3" request %}{% endblock %}
         </section>
       </div>
       {% endblock %}
